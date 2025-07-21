@@ -43,3 +43,11 @@ export async function onRequest(context) {
   }
 }
 // This function will be deployed to Cloudflare Pages and will securely handle requests to the Gemini API.
+// It uses the API key stored in the environment variable "GeminiAPI" to authenticate requests.
+// The function receives a JSON payload from the browser, forwards it to the Gemini API, and
+// returns the response back to the browser.
+// Make sure to set the "GeminiAPI" environment variable in your Cloudflare Pages project
+// with your actual Gemini API key before deploying this function.
+// --- END OF DATA ---
+// --- IGNORE ---
+// This is the Cloudflare Pages Function that will act as a secure proxy.

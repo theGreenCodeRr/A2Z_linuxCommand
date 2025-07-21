@@ -323,15 +323,6 @@ async function findCommand() {
   const userInput = document.getElementById("naturalInput").value;
   const resultContainer = document.getElementById("finderResult");
 
-  // This is the only function that still needs the API key.
-  // It is currently using a placeholder. Replace with your key to make it work.
-  const GEMINI_API_KEY = "YOUR_API_KEY_HERE"; // ⚠️ Replace with your actual key
-
-  if (GEMINI_API_KEY === "YOUR_API_KEY_HERE") {
-    resultContainer.innerHTML = `<div class="explanation-box visible text-red-700">Error: API Key not configured. Please add your key to the script.js file to use the AI Command Finder.</div>`;
-    return;
-  }
-
   if (!userInput.trim()) {
     resultContainer.innerHTML = `<div class="explanation-box visible text-yellow-800" style="background-color: #fefce8; border-left-color: #facc15;">Please describe what you want to do.</div>`;
     return;
@@ -347,13 +338,15 @@ Your response should be in HTML format. Provide the command inside a <pre><code>
 
   const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
   const payload = { contents: chatHistory };
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   try {
-    const response = await fetch(apiUrl, {
+    // Call the secure Cloudflare function instead of the Gemini API directly
+    const response = await fetch("/api/gemini-proxy", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ payload }),
     });
 
     if (!response.ok) {
@@ -408,4 +401,3 @@ function getExplanation(commandName, buttonElement) {
     explanationContainer.innerHTML = `<div class="explanation-box visible text-yellow-800">Explanation not available.</div>`;
   }
 }
-// --- END OF DATA ---
