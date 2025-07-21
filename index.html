@@ -8,13 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
     <!-- Header -->
     <header class="bg-gray-800 text-white shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <h1 class="text-3xl sm:text-4xl font-bold">A-Z Linux Commands</h1>
-            <p class="mt-1 text-gray-300">Your visual and AI-powered guide to the Linux command line.</p>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl sm:text-4xl font-bold">A-Z Linux Commands</h1>
+                <p class="mt-1 text-gray-300">Your visual and AI-powered guide to the Linux command line.</p>
+            </div>
+            <!-- Dark Mode Toggle -->
+            <div class="flex items-center">
+                <span class="text-gray-400 text-sm mr-3 hidden sm:block">Light</span>
+                <button id="darkModeToggle" class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center transition duration-300 focus:outline-none shadow">
+                    <div id="darkModeIndicator" class="w-5 h-5 rounded-full bg-white dark:bg-gray-900 shadow-md transform transition duration-300 translate-x-1 dark:translate-x-6"></div>
+                </button>
+                <span class="text-gray-400 text-sm ml-3 hidden sm:block">Dark</span>
+            </div>
         </div>
     </header>
 
@@ -23,15 +33,15 @@
         
         <!-- Search Bar -->
         <div class="mb-8">
-            <input type="text" id="searchInput" placeholder="Search for a command by name..." class="w-full p-4 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-300 ease-in-out">
+            <input type="text" id="searchInput" placeholder="Search for a command by name..." class="w-full p-4 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-300 ease-in-out">
         </div>
         
         <!-- AI Command Finder -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
-            <h2 class="text-2xl font-bold mb-2 text-gray-800">AI Command Finder</h2>
-            <p class="text-gray-600 mb-4">Describe what you want to do, and our AI will find the right command for you.</p>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">AI Command Finder</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">Describe what you want to do, and our AI will find the right command for you.</p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <input type="text" id="naturalInput" placeholder="e.g., 'find all files larger than 100MB'" class="w-full p-4 rounded-lg border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition flex-grow">
+                <input type="text" id="naturalInput" placeholder="e.g., 'find all files larger than 100MB'" class="w-full p-4 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition flex-grow">
                 <button id="findCommandBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center">
                     <span class="mr-2">✨</span> Find Command
                 </button>

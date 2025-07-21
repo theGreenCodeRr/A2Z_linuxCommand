@@ -247,22 +247,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("commandsGrid");
   const searchInput = document.getElementById("searchInput");
   const findCommandBtn = document.getElementById("findCommandBtn");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const htmlElement = document.documentElement;
+
+  // --- Dark Mode Logic ---
+  // Function to apply the saved theme
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      htmlElement.classList.add("dark");
+    } else {
+      htmlElement.classList.remove("dark");
+    }
+  };
+
+  // Check localStorage and apply the theme on page load
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  // Event listener for the toggle button
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = htmlElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    applyTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
 
   // Populate the grid with command cards
   commands.forEach((command) => {
     const card = document.createElement("div");
     card.className =
-      "command-card bg-white rounded-lg shadow-md overflow-hidden";
+      "command-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden";
     card.innerHTML = `
             <div class="p-6 card-content">
-                <h2 class="text-2xl font-bold mb-2">${command.name}</h2>
-                <p class="text-gray-600 mb-4">${command.desc}</p>
+                <h2 class="text-2xl font-bold mb-2 dark:text-white">${command.name}</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">${command.desc}</p>
                 <button class="explain-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                     ✨ Explain This
                 </button>
                 <div class="explanation-container mt-4"></div>
             </div>
-            <div class="bg-gray-50 p-4">
+            <div class="bg-gray-50 dark:bg-gray-700/50 p-4">
                 <img src="${command.gif}" alt="${command.name} command gif" class="w-full rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/FFFFFF?text=${command.name}+command';">
             </div>
         `;
@@ -401,3 +425,4 @@ function getExplanation(commandName, buttonElement) {
     explanationContainer.innerHTML = `<div class="explanation-box visible text-yellow-800">Explanation not available.</div>`;
   }
 }
+// Function to toggle dark mode

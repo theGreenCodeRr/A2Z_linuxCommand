@@ -2,6 +2,11 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+/* Add smooth transitions for dark mode */
+body, .command-card, header, footer, input, .explanation-box, #darkModeToggle, #darkModeIndicator {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
 /* Animation for cards loading in */
 @keyframes card-load-in {
     from {
@@ -15,7 +20,6 @@ body {
 }
 
 .command-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     opacity: 0; /* Start hidden for animation */
@@ -45,16 +49,31 @@ body {
     border-radius: 0.375rem;
     font-size: 0.9rem;
     line-height: 1.6;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     opacity: 0;
     transform: translateY(10px);
 }
+
+/* Dark mode for explanation box */
+.dark .explanation-box {
+    background-color: #1e3a8a; /* A darker blue */
+    border-left-color: #60a5fa;
+    color: #dbeafe;
+}
+
 
 /* Styling for the AI finder result box */
 #finderResult .explanation-box {
      background-color: #f0fdf4;
      border-left-color: #22c55e;
 }
+
+/* Dark mode for finder result */
+.dark #finderResult .explanation-box {
+    background-color: #166534; /* A darker green */
+    border-left-color: #4ade80;
+    color: #dcfce7;
+}
+
 
 .explanation-box.visible {
     opacity: 1;
