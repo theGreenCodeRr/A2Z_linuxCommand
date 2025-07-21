@@ -53,11 +53,11 @@ body, .command-card, header, footer, input, .explanation-box, #darkModeToggle, #
     transform: translateY(10px);
 }
 
-/* Dark mode for explanation box */
+/* Dark mode for explanation box - IMPROVED COLORS */
 .dark .explanation-box {
-    background-color: #1e3a8a; /* A darker blue */
-    border-left-color: #60a5fa;
-    color: #dbeafe;
+    background-color: #1f2937; /* A subtle dark blue-gray */
+    border-left-color: #3b82f6;
+    color: #d1d5db;
 }
 
 
@@ -67,11 +67,11 @@ body, .command-card, header, footer, input, .explanation-box, #darkModeToggle, #
      border-left-color: #22c55e;
 }
 
-/* Dark mode for finder result */
+/* Dark mode for finder result - IMPROVED COLORS */
 .dark #finderResult .explanation-box {
-    background-color: #166534; /* A darker green */
-    border-left-color: #4ade80;
-    color: #dcfce7;
+    background-color: #1f2937; /* Consistent dark blue-gray */
+    border-left-color: #22c55e;
+    color: #d1d5db;
 }
 
 
@@ -103,7 +103,7 @@ header {
 
 /* Styling for code blocks in results */
 #finderResult pre {
-    background-color: #1f2937;
+    background-color: #000000;
     color: #d1d5db;
     padding: 1rem;
     border-radius: 0.5rem;

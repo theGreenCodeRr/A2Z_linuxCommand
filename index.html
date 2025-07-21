@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A-Z Linux Commands with Visuals & AI Explanations</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Enable class-based dark mode in Tailwind
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,7 +27,7 @@
             <div class="flex items-center">
                 <span class="text-gray-400 text-sm mr-3 hidden sm:block">Light</span>
                 <button id="darkModeToggle" class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center transition duration-300 focus:outline-none shadow">
-                    <div id="darkModeIndicator" class="w-5 h-5 rounded-full bg-white dark:bg-gray-900 shadow-md transform transition duration-300 translate-x-1 dark:translate-x-6"></div>
+                    <div id="darkModeIndicator" class="w-5 h-5 rounded-full bg-white shadow-md transform transition duration-300 translate-x-1 dark:translate-x-6"></div>
                 </button>
                 <span class="text-gray-400 text-sm ml-3 hidden sm:block">Dark</span>
             </div>

@@ -1,3 +1,14 @@
+// --- DARK MODE LOGIC (RUNS IMMEDIATELY) ---
+// This part runs as soon as the script is loaded to prevent a theme flash.
+const htmlElement = document.documentElement;
+const savedTheme = localStorage.getItem("theme") || "light";
+
+if (savedTheme === "dark") {
+  htmlElement.classList.add("dark");
+} else {
+  htmlElement.classList.remove("dark");
+}
+
 // --- DATA ---
 const commands = [
   {
@@ -248,29 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const findCommandBtn = document.getElementById("findCommandBtn");
   const darkModeToggle = document.getElementById("darkModeToggle");
-  const htmlElement = document.documentElement;
-
-  // --- Dark Mode Logic ---
-  // Function to apply the saved theme
-  const applyTheme = (theme) => {
-    if (theme === "dark") {
-      htmlElement.classList.add("dark");
-    } else {
-      htmlElement.classList.remove("dark");
-    }
-  };
-
-  // Check localStorage and apply the theme on page load
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
-
-  // Event listener for the toggle button
-  darkModeToggle.addEventListener("click", () => {
-    const isDark = htmlElement.classList.contains("dark");
-    const newTheme = isDark ? "light" : "dark";
-    applyTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  });
 
   // Populate the grid with command cards
   commands.forEach((command) => {
@@ -320,6 +308,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add event listeners for search and AI finder
   searchInput.addEventListener("keyup", searchCommands);
   findCommandBtn.addEventListener("click", findCommand);
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = htmlElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+
+    if (newTheme === "dark") {
+      htmlElement.classList.add("dark");
+    } else {
+      htmlElement.classList.remove("dark");
+    }
+
+    localStorage.setItem("theme", newTheme);
+  });
 });
 
 // --- FUNCTIONS ---
@@ -425,22 +425,3 @@ function getExplanation(commandName, buttonElement) {
     explanationContainer.innerHTML = `<div class="explanation-box visible text-yellow-800">Explanation not available.</div>`;
   }
 }
-// Function to toggle dark mode
-function toggleDarkMode() {
-  const htmlElement = document.documentElement;
-  const isDark = htmlElement.classList.contains("dark");
-  const newTheme = isDark ? "light" : "dark";
-
-  // Apply the new theme
-  if (newTheme === "dark") {
-    htmlElement.classList.add("dark");
-  } else {
-    htmlElement.classList.remove("dark");
-  }
-
-  // Save the theme preference in localStorage
-  localStorage.setItem("theme", newTheme);
-}
-// Add event listener for the dark mode toggle button
-document.getElementById("darkModeToggle").addEventListener("click", toggleDarkMode);
-// --- END OF DATA ---
