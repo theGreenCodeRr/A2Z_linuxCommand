@@ -426,3 +426,21 @@ function getExplanation(commandName, buttonElement) {
   }
 }
 // Function to toggle dark mode
+function toggleDarkMode() {
+  const htmlElement = document.documentElement;
+  const isDark = htmlElement.classList.contains("dark");
+  const newTheme = isDark ? "light" : "dark";
+
+  // Apply the new theme
+  if (newTheme === "dark") {
+    htmlElement.classList.add("dark");
+  } else {
+    htmlElement.classList.remove("dark");
+  }
+
+  // Save the theme preference in localStorage
+  localStorage.setItem("theme", newTheme);
+}
+// Add event listener for the dark mode toggle button
+document.getElementById("darkModeToggle").addEventListener("click", toggleDarkMode);
+// --- END OF DATA ---
