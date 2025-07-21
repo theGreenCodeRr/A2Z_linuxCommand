@@ -3,7 +3,7 @@
 This project is an interactive, modern web application designed to help users learn and discover Linux commands. 
 It combines a visual A-Z reference with powerful AI features to create a comprehensive learning tool for both beginners and experienced users.
 
-![A-Z Linux Commands Website Screenshot](https://storage.googleapis.com/gemini-prod/images/05171781-a68a-4512-8692-d6021287ea13)
+live on https://linuxcommands.org
 
 ## ✨ Features
 
