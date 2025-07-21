@@ -23,13 +23,29 @@
                 <h1 class="text-3xl sm:text-4xl font-bold">A-Z Linux Commands</h1>
                 <p class="mt-1 text-gray-300">Your visual and AI-powered guide to the Linux command line.</p>
             </div>
-            <!-- Dark Mode Toggle -->
-            <div class="flex items-center">
-                <span class="text-gray-400 text-sm mr-3 hidden sm:block">Light</span>
-                <button id="darkModeToggle" class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center transition duration-300 focus:outline-none shadow">
-                    <div id="darkModeIndicator" class="w-5 h-5 rounded-full bg-white shadow-md transform transition duration-300 translate-x-1 dark:translate-x-6"></div>
-                </button>
-                <span class="text-gray-400 text-sm ml-3 hidden sm:block">Dark</span>
+            <div class="flex items-center space-x-4">
+                <!-- Special Commands Dropdown -->
+                <div class="relative" id="specialMenuContainer">
+                    <button id="specialMenuBtn" class="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition">
+                        <span>Special Commands</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="specialMenuDropdown" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-20 hidden">
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="az">A-Z (Default)</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="nginx">Nginx</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="apache">Apache</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="git">Git</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="docker">Docker</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="kubectl">Kubernetes</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="mysql">MySQL</a>
+                    </div>
+                </div>
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center">
+                    <button id="darkModeToggle" class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center transition duration-300 focus:outline-none shadow">
+                        <div id="darkModeIndicator" class="w-5 h-5 rounded-full bg-white shadow-md transform transition duration-300 translate-x-1 dark:translate-x-6"></div>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -54,6 +70,13 @@
             </div>
             <div id="finderResult" class="mt-6">
                 <!-- Gemini API results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- A-Z Filter -->
+        <div id="azFilterContainer" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-8">
+            <div id="azFilter" class="flex flex-wrap justify-center gap-2">
+                <!-- Filter buttons will be generated here by JS -->
             </div>
         </div>
 
