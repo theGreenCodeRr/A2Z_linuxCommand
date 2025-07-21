@@ -1014,6 +1014,32 @@ const specialCommands = {
       explanation: `<p>Used to create a backup of a database or collection of databases.</p><ul><li><b>mysqldump -u [user] -p [database] > backup.sql</b></li></ul>`,
     },
   ],
+  cuda: [
+    {
+      name: "nvidia-smi",
+      desc: "Monitor NVIDIA GPU devices.",
+      gif: "https://placehold.co/600x400/333/fff?text=cuda",
+      explanation: `<p>The <b>NVIDIA System Management Interface</b> is a command-line utility for monitoring and managing NVIDIA GPU devices.</p><ul><li><b>nvidia-smi -l 1</b>: Continuously monitor GPU stats every second.</li></ul>`,
+    },
+    {
+      name: "nvcc --version",
+      desc: "Show the CUDA compiler version.",
+      gif: "https://placehold.co/600x400/333/fff?text=cuda",
+      explanation: `<p>Displays the version of the NVIDIA CUDA Compiler (NVCC).</p>`,
+    },
+    {
+      name: "deviceQuery",
+      desc: "Show detailed GPU information.",
+      gif: "https://placehold.co/600x400/333/fff?text=cuda",
+      explanation: `<p>A sample program from the CUDA Toolkit that enumerates and displays detailed information about the CUDA-enabled devices in the system.</p>`,
+    },
+    {
+      name: "bandwidthTest",
+      desc: "Test GPU memory bandwidth.",
+      gif: "https://placehold.co/600x400/333/fff?text=cuda",
+      explanation: `<p>A sample program from the CUDA Toolkit that measures the memory bandwidth between the host and the device, and within the device itself.</p>`,
+    },
+  ],
 };
 
 let currentCommandSet = azCommands; // Default to A-Z commands
