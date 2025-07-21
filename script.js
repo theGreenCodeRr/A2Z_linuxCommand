@@ -202,6 +202,12 @@ const commands = [
   },
 ];
 
+// --- ⚠️ SECURITY WARNING ⚠️ ---
+// Your API key is visible in this file. This is okay for personal use,
+// but DO NOT make a GitHub repository with this file public.
+// Anyone with your key can use it and may cause charges to your account.
+const GEMINI_API_KEY = "AIzaSyCOTZfxhdJSR_av5OdlL3hXuHPjok2fqaU";
+
 // --- DYNAMIC CONTENT & EVENT LISTENERS ---
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("commandsGrid");
@@ -283,6 +289,11 @@ async function findCommand() {
   const userInput = document.getElementById("naturalInput").value;
   const resultContainer = document.getElementById("finderResult");
 
+  if (!GEMINI_API_KEY) {
+    resultContainer.innerHTML = `<div class="explanation-box visible text-red-700">Error: API Key not found. Please add it to the script.js file.</div>`;
+    return;
+  }
+
   if (!userInput.trim()) {
     resultContainer.innerHTML = `<div class="explanation-box visible text-yellow-800" style="background-color: #fefce8; border-left-color: #facc15;">Please describe what you want to do.</div>`;
     return;
@@ -298,8 +309,7 @@ Your response should be in HTML format. Provide the command inside a <pre><code>
 
   const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
   const payload = { contents: chatHistory };
-  const apiKey = ""; // API key is handled by the environment
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   try {
     const response = await fetch(apiUrl, {
@@ -336,6 +346,18 @@ Your response should be in HTML format. Provide the command inside a <pre><code>
 async function getExplanation(commandName, buttonElement) {
   const explanationContainer = buttonElement.nextElementSibling;
 
+  if (!GEMINI_API_KEY) {
+    explanationContainer.innerHTML = `<div class="explanation-box visible text-red-700">Error: API Key not found. Please add it to the script.js file.</div>`;
+    setTimeout(
+      () =>
+        explanationContainer
+          .querySelector(".explanation-box")
+          .classList.add("visible"),
+      10
+    );
+    return;
+  }
+
   if (explanationContainer.innerHTML.trim() !== "") {
     explanationContainer.innerHTML = "";
     return;
@@ -349,8 +371,7 @@ async function getExplanation(commandName, buttonElement) {
 
   const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
   const payload = { contents: chatHistory };
-  const apiKey = ""; // API key is handled by the environment
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   try {
     const response = await fetch(apiUrl, {
