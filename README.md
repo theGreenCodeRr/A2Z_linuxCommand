@@ -26,7 +26,7 @@ You just need a modern web browser!
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/theGreenCodeRr/A2Z_linuxCommand](https://github.com/theGreenCodeRr/A2Z_linuxCommand)
+    git clone https://github.com/theGreenCodeRr/A2Z_linuxCommand.git
     ```
 2.  **Navigate to the project directory:**
     ```sh
